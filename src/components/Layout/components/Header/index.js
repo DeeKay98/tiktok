@@ -1,6 +1,7 @@
 import { image } from '@/assets/images';
 import AccountItem from '@/components/AccountItems';
 import Button from '@/components/Button';
+import Image from '@/components/Image';
 import { Wrapper as PopperWrapper } from '@/components/Popper';
 import Menu from '@/components/Popper/Menu';
 import { faTiktok } from '@fortawesome/free-brands-svg-icons';
@@ -12,9 +13,7 @@ import {
     faEarthAsia,
     faEllipsisVertical,
     faGear,
-    faMagnifyingGlass,
-    faMessage,
-    faSpinner,
+    faMagnifyingGlass, faMessage, faSpinner,
     faVideo
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -169,7 +168,7 @@ function Header() {
 
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/7f5d0b2088b281d27d28e06021a8caa0~c5_100x100.jpeg?x-expires=1667444400&x-signature=4E5ubwBeTrOU0lY7FC%2FxDYKJD7o%3D"
                                 className={cx('user-avatar')}
                                 alt="Nguyen Van A"
