@@ -1,14 +1,15 @@
+import * as searchServices from '@/apiServices/searchServices';
 import AccountItem from '@/components/AccountItems';
+import { SearchIcon } from '@/components/Icons';
 import { Wrapper as PopperWrapper } from '@/components/Popper';
-import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { useDebounce } from '@/hooks';
+import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HeadlessTippy from '@tippyjs/react/headless';
-import 'tippy.js/dist/tippy.css';
 import classNames from 'classnames/bind';
-import styles from './Search.module.scss';
 import { useEffect, useRef, useState } from 'react';
-import { SearchIcon } from '@/components/Icons';
-import { useDebounce } from '@/hooks';
+import 'tippy.js/dist/tippy.css';
+import styles from './Search.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -28,17 +29,16 @@ function Search() {
             return;
         }
 
-        setLoading(true);
+        const fetchApi = async () => {
+            setLoading(true);
 
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
-            .then((res) => res.json())
-            .then((res) => {
-                setSearchResult(res.data);
-                setLoading(false);
-            })
-            .catch(() => {
-                setLoading(false);
-            });
+            const result = await searchServices.search(debounced);
+            setSearchResult(result);
+
+            setLoading(false);
+        };
+
+        fetchApi();
     }, [debounced]);
 
     const handleClear = () => {
@@ -80,7 +80,7 @@ function Search() {
                         <FontAwesomeIcon icon={faCircleXmark} />
                     </button>
                 )}
-                {true && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
+                {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
 
                 <button className={cx('search-btn')}>
                     <SearchIcon />
