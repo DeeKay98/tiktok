@@ -143,7 +143,7 @@ function Header() {
                                 alt="Nguyen Van A"
                             />
                         ) : (
-                            <button className={cx('more-btn')} >
+                            <button className={cx('more-btn')}>
                                 <FontAwesomeIcon icon={faEllipsisVertical} />
                             </button>
                         )}
