@@ -3,6 +3,7 @@ import Button from '@/components/Button';
 import { InboxIcon, MessageIcon, UploadIcon } from '@/components/Icons';
 import Image from '@/components/Image';
 import Menu from '@/components/Popper/Menu';
+import routesConfig from '@/config/routes';
 import { faTiktok } from '@fortawesome/free-brands-svg-icons';
 import { faCircleQuestion, faKeyboard, faUser } from '@fortawesome/free-regular-svg-icons';
 import {
@@ -15,6 +16,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tippy from '@tippyjs/react';
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 import 'tippy.js/dist/tippy.css';
 import Search from '../Search';
 import styles from './Header.module.scss';
@@ -100,9 +102,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div className={cx('logo')}>
+                <Link to={routesConfig.home} className={cx('logo')}>
                     <img src={image.logo} alt="tiktok" />
-                </div>
+                </Link>
 
                 <Search />
 
@@ -141,7 +143,7 @@ function Header() {
                                 alt="Nguyen Van A"
                             />
                         ) : (
-                            <button className={cx('more-btn')}>
+                            <button className={cx('more-btn')} >
                                 <FontAwesomeIcon icon={faEllipsisVertical} />
                             </button>
                         )}
