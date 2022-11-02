@@ -3,7 +3,7 @@ import Button from '@/components/Button';
 import { InboxIcon, MessageIcon, UploadIcon } from '@/components/Icons';
 import Image from '@/components/Image';
 import Menu from '@/components/Popper/Menu';
-import routesConfig from '@/config/routes';
+import config from '@/config';
 import { faTiktok } from '@fortawesome/free-brands-svg-icons';
 import { faCircleQuestion, faKeyboard, faUser } from '@fortawesome/free-regular-svg-icons';
 import {
@@ -102,7 +102,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to={routesConfig.home} className={cx('logo')}>
+                <Link to={config.routes.home} className={cx('logo')}>
                     <img src={image.logo} alt="tiktok" />
                 </Link>
 

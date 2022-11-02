@@ -1,4 +1,4 @@
-import * as searchServices from '@/apiServices/searchServices';
+import * as searchServices from '@/services/searchService';
 import AccountItem from '@/components/AccountItems';
 import { SearchIcon } from '@/components/Icons';
 import { Wrapper as PopperWrapper } from '@/components/Popper';
